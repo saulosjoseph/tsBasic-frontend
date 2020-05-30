@@ -1,27 +1,13 @@
 import React from 'react';
 
-interface ICard {
-  status: string;
-  tasks: string[];
-}
-
 interface Props {
-  card: ICard;
+  task: string;
 }
 
-const Card: React.FC<Props> = ({ card }) => {
+const Card: React.FC<Props> = ({task}) => {
   return (
     <div>
-      <h3>{card.status}</h3>
-      <div>
-      { card.tasks.map(task => {
-        return (
-          <div key={task}>
-            <p>{task}</p>
-          </div>
-        )
-      })}
-      </div>
+      <p>{task}</p>
     </div>
   )
 };

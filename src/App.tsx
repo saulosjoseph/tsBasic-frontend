@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import api from './services/api';
 
-import Card from './components/Card';
+import Board from './components/Board';
 
 interface ICard {
   status: string;
@@ -16,10 +16,12 @@ function App() {
       setCards(response.data);
     });
   }, []);
-
+  
   return (
     <div className="App">
-      { cards.map(card => <Card key={card.status} card={card} /> )}
+      <div className="boards">
+        { cards.map(card => <Board key={card.status} card={card} /> )}
+      </div>      
     </div>
   );
 }
