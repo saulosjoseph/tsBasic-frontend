@@ -1,25 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import api from './services/api';
 
-import User from './components/User';
+import Card from './components/Card';
 
-interface IUser {
-  name: string;
-  email: string;
+interface ICard {
+  status: string;
+  tasks: string[];
 }
 
 function App() {
-  const [users, setUsers] = useState<IUser[]>([]);
+  const [cards, setCards] = useState<ICard[]>([]);
 
   useEffect(() => {
-    api.get<IUser[]>('/users').then(response => {
-      setUsers(response.data);
+    api.get<ICard[]>('/todo').then(response => {
+      setCards(response.data);
     });
   }, []);
 
   return (
     <div className="App">
-      { users.map(user => <User key={user.email} user={user} /> )}
+      { cards.map(card => <Card key={card.status} card={card} /> )}
     </div>
   );
 }
